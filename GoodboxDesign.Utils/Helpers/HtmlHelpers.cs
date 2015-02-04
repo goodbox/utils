@@ -90,7 +90,7 @@ namespace GoodboxDesign.Utils.Helpers
                 string queryStringParams = GetQueryString(keys, values);
                 for (pageIndex = pagedDataResult.CurrentPage - 1; pageIndex > pagedDataResult.CurrentPage - pagesForward && pageIndex >= 1; pageIndex--)
                 {
-                    sb.Insert(0, string.Format("<li><a class=\"ajaxPager\" page=\"" + (pageIndex) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
+                    sb.Insert(0, string.Format("<li><a class=\"ajaxPager\" data-page=\"" + (pageIndex) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
                         + (pageIndex - 1) + queryStringParams,
                         pageIndex));
                 }
@@ -99,7 +99,7 @@ namespace GoodboxDesign.Utils.Helpers
                 if (pageIndex >= 1)
                 {
                     sb.Insert(0, "<li class=\"disabled\"><a href=\"#\">...</a></li>");
-                    sb.Insert(0, string.Format("<li><a class=\"ajaxPager\" page=\"0\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "=0" + queryStringParams, 1));
+                    sb.Insert(0, string.Format("<li><a class=\"ajaxPager\" data-page=\"0\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "=0" + queryStringParams, 1));
                 }
 
                 // create the links forward
@@ -111,7 +111,7 @@ namespace GoodboxDesign.Utils.Helpers
                 // this renders three after
                 for (pageIndex = pagedDataResult.CurrentPage + 1; pageIndex < pagedDataResult.CurrentPage + pagesForward && pageIndex <= pagedDataResult.TotalPages; pageIndex++)
                 {
-                    sb.AppendFormat("<li><a class=\"ajaxPager\" page=\"" + (pageIndex) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
+                    sb.AppendFormat("<li><a class=\"ajaxPager\" data-page=\"" + (pageIndex) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
                         + (pageIndex - 1) + queryStringParams,
                         pageIndex);
                 }
@@ -119,7 +119,7 @@ namespace GoodboxDesign.Utils.Helpers
                 if (pageIndex <= pagedDataResult.TotalPages)
                 {
                     sb.AppendFormat("<li class=\"disabled\"><a href=\"#\">...</a></li>");
-                    sb.AppendFormat("<li><a class=\"ajaxPager\" page=\"" + (pagedDataResult.TotalPages - 1) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page
+                    sb.AppendFormat("<li><a class=\"ajaxPager\" data-page=\"" + (pagedDataResult.TotalPages - 1) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page
                         + "=" + (pagedDataResult.TotalPages - 1) + queryStringParams,
                     pagedDataResult.TotalPages);
                 }
@@ -130,7 +130,7 @@ namespace GoodboxDesign.Utils.Helpers
                 if (pagedDataResult.CurrentPage > 1)
                 {
                     sb.Insert(0,
-                        string.Format("<li><a class=\"ajaxPager\" page=\"" + (pagedDataResult.CurrentPage - 2) + "\" href=\"{0}\">{1}</a></li>",
+                        string.Format("<li><a class=\"ajaxPager\" data-page=\"" + (pagedDataResult.CurrentPage - 2) + "\" href=\"{0}\">{1}</a></li>",
                         page + "?" + Enums.QueryString.Page + "=" + (pagedDataResult.CurrentPage - 2) + queryStringParams,
                         "&laquo;&nbsp;Prev"));
                 }
@@ -141,7 +141,7 @@ namespace GoodboxDesign.Utils.Helpers
 
                 if (pagedDataResult.CurrentPage < pagedDataResult.TotalPages)
                 {
-                    sb.AppendFormat("<li><a class=\"ajaxPager\" page=\"" + (pagedDataResult.CurrentPage) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
+                    sb.AppendFormat("<li><a class=\"ajaxPager\" data-page=\"" + (pagedDataResult.CurrentPage) + "\" href=\"{0}\">{1}</a></li>", page + "?" + Enums.QueryString.Page + "="
                         + (pagedDataResult.CurrentPage) + queryStringParams,
                     "Next&nbsp;&raquo;");
                 }
